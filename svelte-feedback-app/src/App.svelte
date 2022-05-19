@@ -3,10 +3,29 @@
 	let lastName = 'Gun'
 	let color = 'blue'
 	let hideLink = false
+	let userList = [
+		{
+			id:'1',
+			name:'Akshat'
+		},
+		{
+			id:'2',
+			name:'Sabavat'
+		},
+		{
+			id:'3',
+			name:'Tanish'
+		},
+		{
+			id:'4',
+			name:'Kumar'
+		}
+	]
 
 	const toggleColor = () => {
 		color = color == 'blue' ? 'purple' : 'blue';
 		hideLink = true
+		userList = [...userList,{id:'5', name:'Jenny'}]
 	}
 
 	$:name = firstName + ' ' + lastName
@@ -21,6 +40,9 @@
 	<p>Click button to show link</p>
 	{/if}
 	<button on:click={toggleColor}>Click Me</button>
+	{#each userList as users (users.id) }
+		<h4>{users.id}. {users.name}</h4>
+	{/each}
 </main>
 
 <style>
