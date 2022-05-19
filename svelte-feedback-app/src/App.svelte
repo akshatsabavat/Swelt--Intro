@@ -2,10 +2,11 @@
 	let firstName = 'Tommy'
 	let lastName = 'Gun'
 	let color = 'blue'
-	let tempNumber = 1000
+	let hideLink = false
 
-	function colorChange(numberHold){
-		console.log(numberHold);
+	const toggleColor = () => {
+		color = color == 'blue' ? 'purple' : 'blue';
+		hideLink = true
 	}
 
 	$:name = firstName + ' ' + lastName
@@ -13,8 +14,13 @@
 
 <main>
 	<h1 style="color: {color};">Hello {name}!</h1>
+	<!--The if block below conditionally renders the component based on the value returned by the javascript function-->
+	{#if hideLink}
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<button on:click={() => colorChange(tempNumber)}>Click Me</button>
+	{:else}
+	<p>Click button to show link</p>
+	{/if}
+	<button on:click={toggleColor}>Click Me</button>
 </main>
 
 <style>
