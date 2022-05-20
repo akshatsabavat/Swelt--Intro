@@ -25,6 +25,7 @@ import Card from "./Card.svelte";
     height: 50px;
     background: #ff6a95;
     color: #fff;
+    font-weight: 700;
     border: 1px #eee solid;
     border-radius: 50%;
     padding: 10px;
@@ -37,6 +38,7 @@ import Card from "./Card.svelte";
     right: 20px;
     cursor: pointer;
     background: none;
+    font-weight: 700;
     border: none;
   }
 </style>
