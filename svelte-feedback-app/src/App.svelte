@@ -27,9 +27,8 @@ import FeedbackList from "./component/FeedbackList.svelte";
 </script>
 
 <main>
-	<h1>Hello</h1>
-	<FeedbackItem />
-	<FeedbackList />
+	<!--passing item to prop-->
+	<FeedbackList feedBack={feedBack}/>
 </main>
 
 <style>
