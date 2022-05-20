@@ -2,6 +2,9 @@
 import Card from "./Card.svelte";
 
     export let item
+    const handleDelete = (itemID) => {
+        console.log(itemID);
+    }
 </script>
 
 <main>
@@ -9,7 +12,7 @@ import Card from "./Card.svelte";
         <div class="numberDis">
             {item.rating}
         </div>
-        <div class="closeBtn">X</div>
+        <div class="closeBtn" on:click={() => handleDelete(item.id)}>X</div>
         <div class="containerText">
             {item.text}
         </div>
