@@ -1,8 +1,12 @@
 <script>
+
+import {v4 as uuidv4} from 'uuid'
+import { createEventDispatcher } from "svelte";
 import Button from "./Button.svelte";
 import Card from "./Card.svelte";
 import FeedbackRatings from "./FeedbackRatings.svelte";
 
+    const dataDispatch = createEventDispatcher()
     const minWordLenght = 10
     let text =''
     let btnDisabled = true
@@ -25,11 +29,13 @@ import FeedbackRatings from "./FeedbackRatings.svelte";
 
     const postReview = () => {
         const newFeedBack = {
-            id: 1,
+            id: uuidv4(),
             rating: +rating,
             text: `${text}`
         }
-        console.log(newFeedBack)
+        // console.log(newFeedBack)
+        dataDispatch('new-feedback',newFeedBack);
+        text = ''
     }
 </script>
 
@@ -46,7 +52,7 @@ import FeedbackRatings from "./FeedbackRatings.svelte";
             </div>
         </form>
         <div class="message">
-            {#if message}
+        {#if message}
             {message}
         {/if}
         </div>
