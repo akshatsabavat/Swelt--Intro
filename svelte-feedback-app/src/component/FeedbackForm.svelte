@@ -1,26 +1,37 @@
 <script>
+import Card from "./Card.svelte";
+
     const minWordLenght = 10
     let text =''
     let btnDisabled = true
     let message
 
     const lenghtCheck = () => {
-        text.trim().length <= 10 ? (message = `Review should be of atleast ${minWordLenght} charecters`, btnDisabled = true ): (message = null, btnDisabled = false)
-
+        if(text.trim().length <= minWordLenght){
+            message = `Review should be of atleast ${minWordLenght} charecters`
+            btnDisabled = true
+        }else {
+            message = null
+            btnDisabled = false
+        }
     }
 </script>
 
 <main>
-    <header>
-        <h2>How would you rate your service with us ?</h2>
-    </header>
-
-    <form action="">
-        <div class="input-group">
-            <input type="text" placeholder="Tell us something">
-            <button></button>
-        </div>
-    </form>
+    <Card>
+        <header>
+            <h2>How would you rate your service with us ?</h2>
+        </header>
+        <form>
+            <div class="input-group">
+                <input type="text" placeholder="Tell us something" on:input={lenghtCheck} bind:value={text}> <!--bind value sets the observer and sends the text to our declared variable text-->
+                <button disabled={btnDisabled} type="submit">Post review</button>
+            </div>
+        </form>
+        {#if message}
+            {message}
+        {/if}
+    </Card>
 </main>
 
 <style>
