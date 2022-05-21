@@ -1,6 +1,7 @@
 <script>
 import Button from "./Button.svelte";
 import Card from "./Card.svelte";
+import FeedbackRatings from "./FeedbackRatings.svelte";
 
     const minWordLenght = 10
     let text =''
@@ -23,6 +24,7 @@ import Card from "./Card.svelte";
         <header>
             <h2>How would you rate your service with us ?</h2>
         </header>
+        <FeedbackRatings on:rating-select/>
         <form>
             <div class="input-group">
                 <input type="text" placeholder="Tell us something" on:input={lenghtCheck} bind:value={text}> <!--bind value sets the observer and sends the text to our declared variable text-->

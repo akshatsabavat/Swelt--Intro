@@ -1,7 +1,13 @@
 <script>
+import { createEventDispatcher } from "svelte";
+
+    const dispatch = createEventDispatcher()
     let selected = 0
+
     const onChange = (e) => {
-        console.log(e)
+        console.log(e.currentTarget.value) // check for current radio button
+        selected = e.currentTarget.value;
+        dispatch('rating-select',selected);
     }
 </script>
 

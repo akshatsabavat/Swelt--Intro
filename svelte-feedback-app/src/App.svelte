@@ -33,10 +33,15 @@ import FeedbackStats from "./component/FeedbackStats.svelte";
 		const deletionID = e.detail;
 		feedBack = feedBack.filter((item) => item.id != deletionID);
 	}
+
+	const ratingFeedback = (e) => {
+		const reviewRating = e.detail;
+		console.log(reviewRating)
+	}
 </script>
 
 <main class="container">
-	<FeedbackForm />
+	<FeedbackForm on:rating-select={ratingFeedback}/>
 	<FeedbackStats count={count} average={average}/>
 	<!--passing item to prop-->
 	<FeedbackList feedBack={feedBack} on:delete-feedback={deleteFeedback}/>
