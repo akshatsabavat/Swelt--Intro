@@ -26,7 +26,9 @@ import FeedbackList from "./component/FeedbackList.svelte";
 	]
 
 	const deleteFeedback = (e) => {
-		console.log(e)
+		console.log(e.detail)
+		const deletionID = e.detail;
+		feedBack = feedBack.filter((item) => item.id != deletionID);
 	}
 </script>
 
