@@ -5,7 +5,6 @@ import FeedbackItem from "./FeedbackItem.svelte";
 </script>
 
 <main>
-    <h2>This is the FeedbackList below</h2>
     {#each feedBack as fb (fb.id)}
     <FeedbackItem item={fb} on:delete-feedback /> <!--Delete Feedback sends the dispatched state-->
     {/each}

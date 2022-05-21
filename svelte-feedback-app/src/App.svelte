@@ -1,6 +1,7 @@
 <script>
 import FeedbackItem from "./component/FeedbackItem.svelte";
 import FeedbackList from "./component/FeedbackList.svelte";
+import FeedbackStats from "./component/FeedbackStats.svelte";
 
 	let feedBack = [
 		{
@@ -25,6 +26,8 @@ import FeedbackList from "./component/FeedbackList.svelte";
 		}
 	]
 
+	$: count = feedBack.length;
+	$: average = feedBack.reduce((accumalator, {rating}) => accumalator + rating, 0)/count // used the reduce function to calculate the aggragate and divided by the count
 	const deleteFeedback = (e) => {
 		console.log(e.detail)
 		const deletionID = e.detail;
@@ -32,7 +35,8 @@ import FeedbackList from "./component/FeedbackList.svelte";
 	}
 </script>
 
-<main>
+<main class="container">
+	<FeedbackStats count={count} average={average}/>
 	<!--passing item to prop-->
 	<FeedbackList feedBack={feedBack} on:delete-feedback={deleteFeedback}/>
 </main>
