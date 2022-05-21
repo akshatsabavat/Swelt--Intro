@@ -1,6 +1,7 @@
 <script>
 import FeedbackItem from "./component/FeedbackItem.svelte";
 import FeedbackList from "./component/FeedbackList.svelte";
+import FeedbackStats from "./component/FeedbackStats.svelte";
 
 	let feedBack = [
 		{
@@ -34,10 +35,9 @@ import FeedbackList from "./component/FeedbackList.svelte";
 	}
 </script>
 
-<main>
+<main class="container">
+	<FeedbackStats count={count} average={average}/>
 	<!--passing item to prop-->
-	<h1>{count}</h1>
-	<h1>{average}</h1>
 	<FeedbackList feedBack={feedBack} on:delete-feedback={deleteFeedback}/>
 </main>
 
