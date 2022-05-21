@@ -1,10 +1,14 @@
 <script>
 import Card from "./Card.svelte";
+import { createEventDispatcher } from "svelte";
 
-    export let item
-    const handleDelete = (itemID) => {
-        console.log(itemID);
-    }
+const dispatch = createEventDispatcher()
+
+export let item
+const handleDelete = (itemID) => {
+    dispatch("delete-feedback",itemID); // dispatches the state and transfers the state to the parent component
+    console.log(itemID);
+}
 </script>
 
 <main>

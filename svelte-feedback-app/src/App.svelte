@@ -24,11 +24,17 @@ import FeedbackList from "./component/FeedbackList.svelte";
 			text: ` Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. `
 		}
 	]
+
+	const deleteFeedback = (e) => {
+		console.log(e.detail)
+		const deletionID = e.detail;
+		feedBack = feedBack.filter((item) => item.id != deletionID);
+	}
 </script>
 
 <main>
 	<!--passing item to prop-->
-	<FeedbackList feedBack={feedBack}/>
+	<FeedbackList feedBack={feedBack} on:delete-feedback={deleteFeedback}/>
 </main>
 
 <style>
