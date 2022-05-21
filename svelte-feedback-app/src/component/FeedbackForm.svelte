@@ -1,4 +1,5 @@
 <script>
+import Button from "./Button.svelte";
 import Card from "./Card.svelte";
 
     const minWordLenght = 10
@@ -25,7 +26,7 @@ import Card from "./Card.svelte";
         <form>
             <div class="input-group">
                 <input type="text" placeholder="Tell us something" on:input={lenghtCheck} bind:value={text}> <!--bind value sets the observer and sends the text to our declared variable text-->
-                <button disabled={btnDisabled} type="submit">Post review</button>
+                <Button disabled={btnDisabled} type="submit">Post review</Button>
             </div>
         </form>
         {#if message}
