@@ -6,7 +6,7 @@
 <main>
     <div class="stats-container">
         <p class="review display">{count} Reviews</p>
-        <p class="average-score display">Average: {average}</p>
+        <p class="average-score display">Average Score : {average}</p>
     </div>
 </main>
 
