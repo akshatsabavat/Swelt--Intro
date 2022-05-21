@@ -28,20 +28,22 @@ import FeedbackStats from "./component/FeedbackStats.svelte";
 
 	$: count = feedBack.length;
 	$: average = feedBack.reduce((accumalator, {rating}) => accumalator + rating, 0)/count // used the reduce function to calculate the aggragate and divided by the count
+	
 	const deleteFeedback = (e) => {
 		console.log(e.detail)
 		const deletionID = e.detail;
 		feedBack = feedBack.filter((item) => item.id != deletionID);
 	}
 
-	const ratingFeedback = (e) => {
-		const reviewRating = e.detail;
-		console.log(reviewRating)
+	const addFeedback = (e) => {
+		console.log(e.detail); //check for incoming feedback data
+		const newFeedback = e.detail
+		feedBack = [newFeedback, ...feedBack] //spread operator to add the new feed back before the others
 	}
 </script>
 
 <main class="container">
-	<FeedbackForm on:rating-select={ratingFeedback}/>
+	<FeedbackForm on:new-feedback={addFeedback}/>
 	<FeedbackStats count={count} average={average}/>
 	<!--passing item to prop-->
 	<FeedbackList feedBack={feedBack} on:delete-feedback={deleteFeedback}/>

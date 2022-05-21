@@ -1,11 +1,16 @@
 <script>
+
+import {v4 as uuidv4} from 'uuid'
+import { createEventDispatcher } from "svelte";
 import Button from "./Button.svelte";
 import Card from "./Card.svelte";
 import FeedbackRatings from "./FeedbackRatings.svelte";
 
+    const dataDispatch = createEventDispatcher()
     const minWordLenght = 10
     let text =''
     let btnDisabled = true
+    let rating = 10
     let message
 
     const lenghtCheck = () => {
@@ -17,6 +22,21 @@ import FeedbackRatings from "./FeedbackRatings.svelte";
             btnDisabled = false
         }
     }
+
+    const postRating = (e) => {
+        rating = e.detail
+    }
+
+    const postReview = () => {
+        const newFeedBack = {
+            id: uuidv4(),
+            rating: +rating,
+            text: `${text}`
+        }
+        // console.log(newFeedBack)
+        dataDispatch('new-feedback',newFeedBack);
+        text = ''
+    }
 </script>
 
 <main>
@@ -24,15 +44,15 @@ import FeedbackRatings from "./FeedbackRatings.svelte";
         <header>
             <h2>How would you rate your service with us ?</h2>
         </header>
-        <FeedbackRatings on:rating-select/>
-        <form>
+        <FeedbackRatings on:rating-select={postRating}/>
+        <form on:submit|preventDefault={postReview}>
             <div class="input-group">
                 <input type="text" placeholder="Tell us something" on:input={lenghtCheck} bind:value={text}> <!--bind value sets the observer and sends the text to our declared variable text-->
                 <Button disabled={btnDisabled} type="submit">Post review</Button>
             </div>
         </form>
         <div class="message">
-            {#if message}
+        {#if message}
             {message}
         {/if}
         </div>
