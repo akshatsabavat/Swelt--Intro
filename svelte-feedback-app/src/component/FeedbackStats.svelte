@@ -1,6 +1,9 @@
 <script>
-    export let count
-    export let average
+    import { FeedbackStore } from "../FeedbackStore"
+    $: count = $FeedbackStore.lenght
+    $: average = $FeedbackStore.reduce((acc, {storeRating}) => {
+        acc + storeRating
+    },0)
 </script>
 
 <main>
