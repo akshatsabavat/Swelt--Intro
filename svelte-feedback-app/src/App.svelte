@@ -7,7 +7,6 @@ import FeedbackStats from "./component/FeedbackStats.svelte";
 <main class="container">
 	<FeedbackForm/>
 	<FeedbackStats/>
-	<!--passing item to prop-->
 	<FeedbackList/>
 </main>
 

@@ -1,12 +1,10 @@
 <script>
-
 import {v4 as uuidv4} from 'uuid'
-import { createEventDispatcher } from "svelte";
+import { FeedbackStore } from '../FeedbackStore';
 import Button from "./Button.svelte";
 import Card from "./Card.svelte";
 import FeedbackRatings from "./FeedbackRatings.svelte";
 
-    const dataDispatch = createEventDispatcher()
     const minWordLenght = 10
     let text =''
     let btnDisabled = true
@@ -34,7 +32,9 @@ import FeedbackRatings from "./FeedbackRatings.svelte";
             text: `${text}`
         }
         // console.log(newFeedBack)
-        dataDispatch('new-feedback',newFeedBack);
+        FeedbackStore.update((currentFeedback) => {
+          return [newFeedBack,...currentFeedback]
+        } )
         text = ''
     }
 </script>
