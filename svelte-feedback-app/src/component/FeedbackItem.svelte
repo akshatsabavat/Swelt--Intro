@@ -1,13 +1,11 @@
 <script>
+import { FeedbackStore } from "../FeedbackStore";
 import Card from "./Card.svelte";
-import { createEventDispatcher } from "svelte";
-
-const dispatch = createEventDispatcher()
-
 export let item
 const handleDelete = (itemID) => {
-    dispatch("delete-feedback",itemID); // dispatches the state and transfers the state to the parent component
-    console.log(itemID);
+  FeedbackStore.update((currentFeedback) => { //update updates the store writeable
+    return currentFeedback.filter((item) => item.id != itemID) //returns the filterd currentFeedback array
+  })
 }
 </script>
 
