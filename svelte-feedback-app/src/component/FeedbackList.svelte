@@ -1,8 +1,7 @@
 <script>
     import { fade, scale } from 'svelte/transition'
+    import { FeedbackStore } from '../FeedbackStore';
     import FeedbackItem from "./FeedbackItem.svelte";
-    import { FeedbackStore } from "../FeedbackStore"
-    console.log(feedBack)
 </script>
 
 <main>
