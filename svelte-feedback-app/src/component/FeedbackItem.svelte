@@ -1,8 +1,9 @@
 <script>
-import { FeedbackStore } from "../FeedbackStore";
-import Card from "./Card.svelte";
-export let item
-const handleDelete = (itemID) => {
+  import { FeedbackStore } from "../FeedbackStore";
+  import Card from "./Card.svelte";
+  export let item
+  const handleDelete = (itemID) => {
+    
   FeedbackStore.update((currentFeedback) => { //update updates the store writeable
     return currentFeedback.filter((item) => item.id != itemID) //returns the filterd currentFeedback array
   })

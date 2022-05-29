@@ -1,9 +1,12 @@
 <script>
-    import { FeedbackStore } from "../FeedbackStore"
+    import { FeedbackStore } from "../FeedbackStore";
     $: count = $FeedbackStore.lenght
-    $: average = $FeedbackStore.reduce((acc, {storeRating}) => {
-        acc + storeRating
-    },0)
+    $: average = $FeedbackStore.reduce((acc, {rating}) => 
+        acc + rating
+    ,0)/$FeedbackStore.lenght
+
+    console.log(count)
+    console.log(average)
 </script>
 
 <main>
